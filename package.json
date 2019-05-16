@@ -1,0 +1,18 @@
+{
+  "name": "web3",
+  "version": "1.0.0",
+  "description": "",
+  "main": "aionVote.js",
+  "scripts": {
+    "start": "node aionVote.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "aion-web3": "^1.2.5-beta.2",
+    "chalk": "^2.4.2",
+    "log4js": "^4.1.0",
+    "node-zip": "^1.1.1"
+  }
+}

@@ -1,0 +1,10 @@
+{
+    "env":{
+        "contractA" : "0xa02eb418d8190296b46b6db313395a688703ed5d9282f52c5336559d2f9dee36",
+        "contractB" : "0x225a8c0a9706d958c512cb9a80b6e1b4234d6f812bbd769619d4da9256bf5e25",
+        "contractC" : "0xa0364382e837685d78931f977bbb9b445c2483750fdc704355a7cdca3c245e4f",
+        "mainContract" : "0xa0f1131e44b3fe040e6573aa70e06f4511cf615afbb0140523d1341ba75c9e3b",
+        "privateKey" : "ba2c5a5eff7e5c47002e2e19332971be9a01370d4ee166089a233986ed3f807ca36c2cf8f4c215e5a5cbb5d3597ca57829cc96828dcce7d3e0bdcd04246b30b2",
+        "url":"https://aion.api.nodesmith.io/v1/mastery/jsonrpc?apiKey=475ebaea58c14fff9605d0bb72a082e6"
+    }
+}
