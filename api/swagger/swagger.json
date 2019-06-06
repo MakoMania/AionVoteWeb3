@@ -1,9 +1,9 @@
 {
     "swagger": "2.0",
     "info": {
-       "description": "This is the documentation for `KESHOLABS PAY USING NATIVE MPESA APIs`",
+       "description": "This is the documentation for `AION VOTE WEB APPLICATION`",
        "version": "1.0.0",
-       "title": "KESHOLABS PAYMENT GATEWAY",
+       "title": "AION VOTE APPLICATION",
        "termsOfService": "http://swagger.io/terms/",
        "contact": {
           "email": "cjnjenga@gmail.com"
@@ -13,36 +13,12 @@
           "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
        }
     },
-    "host": "localhost:4300",
+    "host": "localhost:7900",
     "basePath": "/",
     "tags": [
-      {
-         "name": "Credential",
-         "description": "This API is used to generate `API, CONSUMER KEY, CONSUMER SECRET KEYS`. "
-      },
        {
           "name": "Admin",
-          "description": "This API is used to make payment requests from Client to `KESHOLABS ACCOUNT`. "
-       },
-       {
-          "name": "B2C",
-          "description": "This API is used to transact between an `KESHOLABS MPESA ACCOUNT` to a phone number registered on M-Pesa."
-       },
-       {
-          "name": "B2B",
-          "description": "Use this API to carry out organization to organization fund transfer."
-       },
-       {
-          "name": "STK",
-          "description": "This API is used to make payment request using online `CHECKOUT`"
-       },
-       {
-          "name": "REGISTER URL",
-          "description": "Use this API to register validation and confirmation URLs on M-Pesa."
-       },
-       {
-          "name": "QUERY",
-          "description": "Query everything on `KESHOLABS MPESA ACCOUNT`."
+          "description": "This API for `ADMIN PORTAL`. "
        }
     ],
     "schemes": [
@@ -50,77 +26,14 @@
        "https"
     ],
     "paths": {
-       "/api/v1/credentials": {
-         "post": {
-            "tags": [
-               "Credential"
-            ],
-            "summary": "In order to carry out any URL request you shall need security credentials",
-            "description": "",
-            "operationId": "c2b",
-            "consumes": [
-               "application/json"
-            ],
-            "produces": [
-               "application/json"
-            ],
-            "parameters": [
-               {
-                  "in": "body",
-                  "name": "body",
-                  "description": "A function for paying goods and services",
-                  "required": true,
-                  "schema": {
-                     "$ref": "#/definitions/loginModel"
-                  }
-               }
-            ],
-            "responses": {
-               "400.003.01": {
-                  "description": "Invalid Access Token"
-               },
-               "500.003.1001": {
-                 "description": "Internal Server Error / Server Error"
-              },
-              "400.003.02": {
-                 "description": " Error Occured: Quota Violation"
-              },
-              "500.003.02": {
-                 "description": "Error Occured: Spike Arrest Violation"
-              },
-              "404.003.01": {
-                 "description": "Resource not found"
-              },
-              "401.003.01": {
-                 "description": "Error Occurred - Invalid Access Token"
-              },   
-              "200": {
-                 "description": "successful operation",
-                 "schema": {
-                    "items": {
-                       "$ref": "#/definitions/loginModelResponse"
-                    }
-                 }
-              }
-            },
-            "security": [
-               {
-                  "petstore_auth": [
-                     "write:pets",
-                     "read:pets"
-                  ]
-               }
-            ]
-         }
-       },
-       "/api/v1/c2b": {
+       "/admin.portal/signup": {
           "post": {
              "tags": [
                 "Admin"
              ],
-             "summary": "Initiate Payments For Goods And Services",
+             "summary": "Create an account for a user",
              "description": "",
-             "operationId": "c2b",
+             "operationId": "signup",
              "consumes": [
                 "application/json"
              ],
@@ -134,26 +47,11 @@
                    "description": "A function for paying goods and services",
                    "required": true,
                    "schema": {
-                      "$ref": "#/definitions/paymentReqModel"
+                      "$ref": "#/definitions/signupModel"
                    }
                 }
              ],
              "responses": {
-                "400.003.01": {
-                   "description": "Invalid Access Token"
-                },
-                "500.003.1001": {
-                  "description": "Internal Server Error / Server Error"
-               },
-               "400.003.02": {
-                  "description": " Error Occured: Quota Violation"
-               },
-               "500.003.02": {
-                  "description": "Error Occured: Spike Arrest Violation"
-               },
-               "404.003.01": {
-                  "description": "Resource not found"
-               },
                "401.003.01": {
                   "description": "Error Occurred - Invalid Access Token"
                },   
@@ -161,7 +59,7 @@
                   "description": "successful operation",
                   "schema": {
                      "items": {
-                        "$ref": "#/definitions/c2bResponse"
+                        "$ref": "#/definitions/signupResponse"
                      }
                   }
                }
@@ -176,14 +74,14 @@
              ]
           }
        },
-       "/api/v1/b2c": {
+       "/admin.portal/verify": {
          "post": {
             "tags": [
-               "B2C"
+               "Admin"
             ],
-            "summary": "Initiate Payments From `KESHOLABS ACCOUNT` to any mpesa registered user",
+            "summary": "Verify email address",
             "description": "",
-            "operationId": "b2c",
+            "operationId": "verify",
             "consumes": [
                "application/json"
             ],
@@ -197,35 +95,19 @@
                   "description": "A function for paying goods and services",
                   "required": true,
                   "schema": {
-                     "$ref": "#/definitions/paymentReqModel"
+                     "$ref": "#/definitions/emailModel"
                   }
                }
             ],
             "responses": {
-               "400.003.01": {
-                  "description": "Invalid Access Token"
-               },
-               "500.003.1001": {
-                 "description": "Internal Server Error / Server Error"
-              },
-              "400.003.02": {
-                 "description": " Error Occured: Quota Violation"
-              },
-              "500.003.02": {
-                 "description": "Error Occured: Spike Arrest Violation"
-              },
-              "404.003.01": {
-                 "description": "Resource not found"
-              },
               "401.003.01": {
                  "description": "Error Occurred - Invalid Access Token"
               },   
               "200": {
                  "description": "successful operation",
                  "schema": {
-                    "type": "array",
                     "items": {
-                       "$ref": "#/definitions/c2bResponse"
+                       "$ref": "#/definitions/signupResponse"
                     }
                  }
               }
@@ -239,381 +121,51 @@
                }
             ]
          }
-       },
-       "/api/v1/b2b": {
-          "post": {
-             "tags": [
-                "B2B"
-             ],
-             "summary": "Initiate Payments From `KESHOLABS ACCOUNT` to any other `BUSINESS ORGANIZATION` eg bank ",
-             "description": "Returns a single pet",
-             "operationId": "b2b",
-             "produces": [
-                "application/json"
-             ],
-             "parameters": [
+      },
+      "/admin.portal/addproposal": {
+         "post": {
+            "tags": [
+               "Admin"
+            ],
+            "summary": "Add proposal",
+            "description": "",
+            "operationId": "proposal",
+            "consumes": [
+               "application/json"
+            ],
+            "produces": [
+               "application/json"
+            ],
+            "parameters": [
                {
                   "in": "body",
                   "name": "body",
-                  "description": "A function for transfering funds from KESHOLABS ACCOUNT to any other business account",
+                  "description": "A function for adding polls to contract",
                   "required": true,
                   "schema": {
-                   "$ref": "#/definitions/paymentReqModel"
-                }
+                     "$ref": "#/definitions/addProposalModel"
+                  }
                }
-             ],
-             "responses": {
-               "400.003.01": {
-                  "description": "Invalid Access Token"
-               },
-               "500.003.1001": {
-                 "description": "Internal Server Error / Server Error"
-              },
-              "400.003.02": {
-                 "description": " Error Occured: Quota Violation"
-              },
-              "500.003.02": {
-                 "description": "Error Occured: Spike Arrest Violation"
-              },
-              "404.003.01": {
-                 "description": "Resource not found"
-              },
-              "401.003.01": {
-                 "description": "Error Occurred - Invalid Access Token"
-              },   
-              "200": {
-                 "description": "successful operation",
-                 "schema": {
-                    "type": "array",
-                    "items": {
-                       "$ref": "#/definitions/c2bResponse"
-                    }
-                 }
-              }
-             },
-             "security": [
-                {
-                   "api_key": []
-                }
-             ]
-          }
-       },
-       "/api/v1/stk": {
-          "post": {
-             "tags": [
-                "STK"
-             ],
-             "summary": "Initiate Payments For Goods And Services Using Mpesa STK Push",
-             "description": "",
-             "operationId": "mpesastkpush",
-             "consumes": [
-               "application/json"
             ],
-             "produces": [
-                "application/json"
-             ],
-             "parameters": [
-                {
-                   "in": "body",
-                   "name": "body",
-                   "description": "A function for paying goods and services using mpesa online checkout",
-                   "required": true,
-                   "schema": {
-                    "$ref": "#/definitions/stkpaymentModel"
-                 }
-                }
-             ],
-             "responses": {
-               "400.003.01": {
-                  "description": "Invalid Access Token"
-               },
-               "500.003.1001": {
-                 "description": "Internal Server Error / Server Error"
-              },
-              "400.003.02": {
-                 "description": " Error Occured: Quota Violation"
-              },
-              "500.003.02": {
-                 "description": "Error Occured: Spike Arrest Violation"
-              },
-              "404.003.01": {
-                 "description": "Resource not found"
-              },
-              "401.003.01": {
-                 "description": "Error Occurred - Invalid Access Token"
-              },   
-              "200": {
-                 "description": "successful operation",
-                 "schema": {
-                    "type": "array",
-                    "items": {
-                       "$ref": "#/definitions/c2bResponse"
-                    }
-                 }
-              }
-             },
-             "security": [
-                {
-                   "petstore_auth": [
-                      "write:pets",
-                      "read:pets"
-                   ]
-                }
-             ]
-          }
-       },
-       "/api/v1/main/register": {
-          "get": {
-             "tags": [
-                "REGISTER URL"
-             ],
-             "summary": "Register a server IP where mpesa system will be sending callbacks and notifications",
-             "description": "",
-             "operationId": "registerurl",
-             "produces": [
-                "application/json"
-             ],
-             "parameters": [
-             ],
-             "responses": {
-               "400.003.01": {
-                  "description": "Invalid Access Token"
-               },
-               "500.003.1001": {
-                 "description": "Internal Server Error / Server Error"
-              },
-              "400.003.02": {
-                 "description": " Error Occured: Quota Violation"
-              },
-              "500.003.02": {
-                 "description": "Error Occured: Spike Arrest Violation"
-              },
-              "404.003.01": {
-                 "description": "Resource not found"
-              },
-              "401.003.01": {
-                 "description": "Error Occurred - Invalid Access Token"
-              },   
-              "200": {
-                 "description": "successful operation",
-                 "schema": {
-                    "type": "array",
-                    "items": {
-                       "$ref": "#/definitions/c2bResponse"
-                    }
-                 }
-              }
-             },
-             "security": [
-                {
-                   "petstore_auth": [
-                      "write:pets",
-                      "read:pets"
-                   ]
-                }
-             ]
-          }
-       },
-       "/api/v1/mpesa/accountBal": {
-          "get": {
-             "tags": [
-                "QUERY"
-             ],
-             "summary": "Returns organization's BALANCE",
-             "description": "",
-             "operationId": "accountbalance",
-             "consumes": [
-               "application/json"
-            ],
-             "produces": [
-                "application/json"
-             ],
-             "parameters": [],
-             "responses": {
-               "400.003.01": {
-                  "description": "Invalid Access Token"
-               },
-               "500.003.1001": {
-                 "description": "Internal Server Error / Server Error"
-              },
-              "400.003.02": {
-                 "description": " Error Occured: Quota Violation"
-              },
-              "500.003.02": {
-                 "description": "Error Occured: Spike Arrest Violation"
-              },
-              "404.003.01": {
-                 "description": "Resource not found"
-              },
-              "401.003.01": {
-                 "description": "Error Occurred - Invalid Access Token"
-              },   
-              "200": {
-                 "description": "successful operation",
-                 "schema": {
-                    "type": "array",
-                    "items": {
-                       "$ref": "#/definitions/c2bResponse"
-                    }
-                 }
-              }
-             },
-             "security": [
-                {
-                   "api_key": []
-                }
-             ]
-          }
-       },
-       "/api/v1/mpesa/status": {
-         "get": {
-            "tags": [
-               "QUERY"
-            ],
-            "summary": "Returns transaction STATUS",
-            "description": "",
-            "operationId": "status",
-            "consumes": [
-              "application/json"
-           ],
-            "produces": [
-               "application/json"
-            ],
-            "parameters": [],
             "responses": {
-              "400.003.01": {
-                 "description": "Invalid Access Token"
-              },
-              "500.003.1001": {
-                "description": "Internal Server Error / Server Error"
-             },
-             "400.003.02": {
-                "description": " Error Occured: Quota Violation"
-             },
-             "500.003.02": {
-                "description": "Error Occured: Spike Arrest Violation"
-             },
-             "404.003.01": {
-                "description": "Resource not found"
-             },
-             "401.003.01": {
-                "description": "Error Occurred - Invalid Access Token"
-             },   
-             "200": {
-                "description": "successful operation",
-                "schema": {
-                   "type": "array",
-                   "items": {
-                      "$ref": "#/definitions/c2bResponse"
-                   }
-                }
-             }
+              "401.003.01": {
+                 "description": "Error Occurred - Invalid Access Token"
+              },   
+              "200": {
+                 "description": "successful operation",
+                 "schema": {
+                    "items": {
+                       "$ref": "#/definitions/signupResponse"
+                    }
+                 }
+              }
             },
             "security": [
                {
-                  "api_key": []
-               }
-            ]
-         }
-      },
-      "/api/v1/mpesa/reversal": {
-         "get": {
-            "tags": [
-               "QUERY"
-            ],
-            "summary": "Reverses a transaction back to its INITIATOR",
-            "description": "",
-            "operationId": "reversalstatus",
-            "consumes": [
-              "application/json"
-           ],
-            "produces": [
-               "application/json"
-            ],
-            "parameters": [],
-            "responses": {
-              "400.003.01": {
-                 "description": "Invalid Access Token"
-              },
-              "500.003.1001": {
-                "description": "Internal Server Error / Server Error"
-             },
-             "400.003.02": {
-                "description": " Error Occured: Quota Violation"
-             },
-             "500.003.02": {
-                "description": "Error Occured: Spike Arrest Violation"
-             },
-             "404.003.01": {
-                "description": "Resource not found"
-             },
-             "401.003.01": {
-                "description": "Error Occurred - Invalid Access Token"
-             },   
-             "200": {
-                "description": "successful operation",
-                "schema": {
-                   "type": "array",
-                   "items": {
-                      "$ref": "#/definitions/c2bResponse"
-                   }
-                }
-             }
-            },
-            "security": [
-               {
-                  "api_key": []
-               }
-            ]
-         }
-      },
-      "/api/v1/stk/query": {
-         "get": {
-            "tags": [
-               "QUERY"
-            ],
-            "summary": "Queries STK's transactions",
-            "description": "",
-            "operationId": "stkquery",
-            "consumes": [
-              "application/json"
-           ],
-            "produces": [
-               "application/json"
-            ],
-            "parameters": [],
-            "responses": {
-              "400.003.01": {
-                 "description": "Invalid Access Token"
-              },
-              "500.003.1001": {
-                "description": "Internal Server Error / Server Error"
-             },
-             "400.003.02": {
-                "description": " Error Occured: Quota Violation"
-             },
-             "500.003.02": {
-                "description": "Error Occured: Spike Arrest Violation"
-             },
-             "404.003.01": {
-                "description": "Resource not found"
-             },
-             "401.003.01": {
-                "description": "Error Occurred - Invalid Access Token"
-             },   
-             "200": {
-                "description": "successful operation",
-                "schema": {
-                   "type": "array",
-                   "items": {
-                      "$ref": "#/definitions/c2bResponse"
-                   }
-                }
-             }
-            },
-            "security": [
-               {
-                  "api_key": []
+                  "petstore_auth": [
+                     "write:pets",
+                     "read:pets"
+                  ]
                }
             ]
          }
@@ -674,17 +226,17 @@
          "xml": {
             "name": "Pet"
          }
-      },
-       "paymentReqModel": {
+       },
+       "signupModel": {
           "type": "object",
           "properties": {
-             "phone": {
+             "email": {
                 "type": "string"
              },
-             "billref": {
+             "username": {
                 "type": "string"
              },
-             "amount": {
+             "password": {
                 "type": "string"
              }
           },
@@ -692,38 +244,35 @@
              "name": "Order"
           }
        },
-       "c2bResponse": {
+       "signupResponse": {
           "type": "object",
           "properties": {
              "success":{
                "type":"boolean"
              },
-             "data":{
-               "type": "object",
-               "properties": {
-                  "ConversationID": {
-                     "type": "string"
-                  },
-                  "OriginatorCoversationID": {
-                     "type": "string"
-                  },
-                  "ResponseDescription": {
-                     "type": "string"
-                  }
-               }
-             }
+             "message":{
+               "type": "string"
+            }
           },
           "xml": {
              "name": "Pet"
           }
        },
-       "stkpaymentModel": {
+       "emailModel": {
+         "type": "object",
+         "properties": {
+            "email":{
+              "type": "string"
+           }
+         }
+       },
+       "addProposalModel": {
           "type": "object",
           "properties": {
-            "amount": {
+            "contract": {
                "type": "string"
             },
-            "sending_phone": {
+            "type": {
                "type": "string"
             }
           },

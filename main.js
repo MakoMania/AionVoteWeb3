@@ -40,7 +40,7 @@ const startApp = async () =>{
   
   // START THE SERVER
   app.listen(port);
-  console.log('Magic happens on port ' + `${port}`);
+  console.log('Magic happens on port ' + `http://localhost:${port}`);
 }
 startApp();
 

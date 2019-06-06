@@ -6,7 +6,8 @@ logger.level = 'debug';
 const DBName = 'AionVote';
 const DBUser = 'admin';
 const DBPassword = 'team12340';
-const MONGODB_URI = `mongodb://${DBUser}:${DBPassword}@165.22.94.162/${DBName}`;
+// const MONGODB_URI = `mongodb://${DBUser}:${DBPassword}@165.22.94.162:27017/${DBName}?authSource=admin`;
+const MONGODB_URI = `mongodb://localhost:27017/${DBName}`;
 
 module.exports = {
 	 dbConnection () {	
